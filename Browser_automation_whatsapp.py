@@ -1,0 +1,30 @@
+
+#whatsapp browser automation
+
+
+
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import time
+driver=webdriver.Chrome("C:\selenium\chromedriver.exe")
+driver.get("https://web.whatsapp.com/")
+wait=WebDriverWait(driver,600)
+target='"Bitafren"'#enter your friend name
+string="Message sent using python!!"#message send  to your friend
+x_arg='//span[contains(@title, '+ target + ')]'
+target=wait.until(EC.presence_of_element_located((By.XPATH,  x_arg)))
+target.click()
+
+input_box=driver.find_element_by_class_name('_1Plpp')#Message send id or class 
+for i in range(50):
+    input_box.send_keys(string+Keys.ENTER)
+    
+
+    
+
+
+
+
